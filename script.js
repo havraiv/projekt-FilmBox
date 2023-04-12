@@ -115,13 +115,7 @@ const addClass = () => {
 };
 menuTlacitko.addEventListener('click', addClass);
 
-// Ve script.js pomocí document.querySelector vyhledejte prvek s id seznam-filmu.
-
 const seznamFilmu = document.querySelector('#seznam-filmu');
-
-// Vymažte tomuto prvku jeho vnitřní HTML, aby byl prázdný.
-
-// Pomocí cyklu projděte všechny filmy z předpřipraveného pole a pro každý přidejte do prvku #seznam-filmu následující HTML doplněné o patřičné informace (název, ochutnávku, plakát).
 
 filmy.forEach((film) => {
   if (seznamFilmu !== null) {
@@ -137,9 +131,19 @@ filmy.forEach((film) => {
 		<div class="card-body">
 			<h5 class="card-title">${film.nazev}</h5>
 			<p class="card-text">${film.ochutnavka}</p>
-			<a href="film.html" class="btn btn-primary">Přehrát</a>
+			<a href="film.html#${film.id}" class="btn btn-primary">Přehrát</a>
 		</div>
 	</div>
 	</div>`;
   }
 });
+
+// Najděte prvek s id detail-filmu a zařiďte, aby se následující kód vykonal, pouze pokud je prvek přítomen.
+
+const detailFilmu = document.querySelector('#detail-filmu');
+
+// Zjistěte, na film s jakým id se uživatel chce dívat kódem location.hash. Všimněte si, že hodnota vlastnosti hash začíná znakem mřížky (#). Id v poli filmy mřížkou nezačínají. Mřížku vhodnou metodou na řetězcích odřízněte. Není potřeba. Je spíš na škodu.
+
+// Cyklem prohledejte pole filmy a film se stejným id si poznamenejte do proměnné.
+
+// Vepište informace (název, popis, plakát) o nalezeném filmu do stránky. Upravte textový obsah a atributy příslušných potomků prvku #detail-filmu. Do .card-text vepište dlouhý popis filmu.
