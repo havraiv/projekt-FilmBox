@@ -148,6 +148,9 @@ if (detailFilmu !== null) {
       document.querySelector('.card-title').innerHTML = film.nazev;
       document.querySelector('.card-text').innerHTML = film.popis;
       document.querySelector('img').src = film.plakat.url;
+      document.querySelector('#premiera').innerHTML = `Premiéra <strong>${dayjs(
+        film.premiera,
+      ).format('D. M. YYYY')}</strong>`;
     }
   });
 }
