@@ -138,12 +138,16 @@ filmy.forEach((film) => {
   }
 });
 
-// Najděte prvek s id detail-filmu a zařiďte, aby se následující kód vykonal, pouze pokud je prvek přítomen.
-
 const detailFilmu = document.querySelector('#detail-filmu');
 
-// Zjistěte, na film s jakým id se uživatel chce dívat kódem location.hash. Všimněte si, že hodnota vlastnosti hash začíná znakem mřížky (#). Id v poli filmy mřížkou nezačínají. Mřížku vhodnou metodou na řetězcích odřízněte. Není potřeba. Je spíš na škodu.
-
-// Cyklem prohledejte pole filmy a film se stejným id si poznamenejte do proměnné.
-
-// Vepište informace (název, popis, plakát) o nalezeném filmu do stránky. Upravte textový obsah a atributy příslušných potomků prvku #detail-filmu. Do .card-text vepište dlouhý popis filmu.
+if (detailFilmu !== null) {
+  let aktualniFilm;
+  filmy.forEach((film) => {
+    if (film.id === location.hash.slice(1)) {
+      aktualniFilm = film;
+      document.querySelector('.card-title').innerHTML = film.nazev;
+      document.querySelector('.card-text').innerHTML = film.popis;
+      document.querySelector('img').src = film.plakat.url;
+    }
+  });
+}
